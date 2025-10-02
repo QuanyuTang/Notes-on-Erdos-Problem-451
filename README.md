@@ -1,6 +1,6 @@
 # Notes on Erdős Problem #451
 
-This repository contains my note:
+This repository contains the note:
 
 📄 [Full note PDF](Notes_on_Erdos_Problem_451_Density_and_Heuristics.pdf)
 
@@ -40,7 +40,4 @@ has no prime factor in the interval \((k,2k)\).
 - H. Iwaniec and E. Kowalski, *Analytic Number Theory*.
 - H. L. Montgomery and R. C. Vaughan, *Multiplicative Number Theory I. Classical Theory*.
 
----
-
-Author: **Quanyu Tang**, Xi’an Jiaotong University
 
