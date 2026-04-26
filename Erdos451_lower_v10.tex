@@ -1,0 +1,913 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+
+\title{A Konyagin-Type Lower Bound in an Erd\H{o}s Divisibility Problem}
+\author{}
+\date{}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{remark}{Remark}
+
+\newcommand{\dd}{\,\mathrm d}
+\newcommand{\dist}{\operatorname{dist}}
+\newcommand{\ZZ}{\mathbb Z}
+\newcommand{\NN}{\mathbb N}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+
+For a positive integer \(k\), let \(n_k\) be the least integer \(n>2k\) such
+that
+\[
+        p\nmid \prod_{1\le i\le k}(n-i)
+\]
+for every prime \(p\) with \(k<p<2k\). This is Erd\H{o}s Problem~\#451 in the
+Erd\H{o}s Problems website \cite{ErdosProblems451}. Equivalently, \(n_k\)
+is the least integer \(n>2k\) for which no prime in \((k,2k)\) divides any of
+the \(k\) consecutive integers
+\[
+        n-k,\ n-k+1,\ldots,\ n-1 .
+\]
+Such integers exist. Indeed, if
+\[
+        Q_k=\prod_{k<p<2k}p,
+\]
+then every sufficiently large multiple \(n\) of \(Q_k\) satisfies
+\[
+        n-i\equiv -i\not\equiv 0\pmod p
+\]
+for all \(1\le i\le k\) and all primes \(p\in(k,2k)\).
+
+We shall call an integer \(n>2k\) \emph{\(k\)-admissible} if it satisfies the
+above divisibility condition. Thus \(n_k\) is the least \(k\)-admissible
+integer.
+
+The purpose of this note is to prove the lower bound
+\[
+        n_k>
+        \exp\!\left(
+        c\frac{(\log k)^2}{\log\log k}
+        \right)
+\]
+with an absolute constant \(c>0\).
+
+The idea is simple. We use only primes very close to \(k\). Let
+\[
+        H=k^{1-\beta},
+\]
+where \(0<\beta<1\) is fixed. If \(p\in(k,k+H]\) and \(n\) is
+\(k\)-admissible, then the least nonnegative residue of \(n\) modulo \(p\) is
+either \(0\), or larger than \(k\). Since \(p-k\le H\), this implies
+\[
+        \left\|\frac np\right\|\le \frac{H}{k}=k^{-\beta},
+\]
+where \(\|x\|\) denotes the distance from \(x\) to the nearest integer. Thus
+every prime \(p\in(k,k+H]\) gives an integer point \(u=p\) near the curve
+\[
+        v=\frac{n}{u}.
+\]
+A theorem of Konyagin on integer points close to a smooth curve gives a strong
+upper bound for the number of such \(u\), while the Baker--Harman theorem on
+primes in short intervals gives a lower bound of order \(H/\log k\). With a
+careful choice of parameters these bounds are incompatible when
+\[
+        n\le
+        \exp\!\left(
+        c\frac{(\log k)^2}{\log\log k}
+        \right).
+\]
+
+\section{Main result}
+
+\begin{theorem}
+\label{thm:main}
+There exists an absolute constant \(c>0\) such that, for all sufficiently large
+\(k\),
+\[
+        n_k>
+        \exp\!\left(
+        c\frac{(\log k)^2}{\log\log k}
+        \right).
+\]
+Equivalently, for all sufficiently large \(k\), every integer \(n\) satisfying
+\[
+        2k<n\le
+        \exp\!\left(
+        c\frac{(\log k)^2}{\log\log k}
+        \right)
+\]
+has the property that
+\[
+        \prod_{1\le i\le k}(n-i)
+\]
+is divisible by at least one prime \(p\in(k,2k)\).
+\end{theorem}
+
+We first record a preliminary lower bound. The proof is included to make the
+argument self-contained.
+
+\begin{lemma}
+\label{lem:prelim}
+There exists an absolute constant \(c_1>0\) such that, for all sufficiently
+large \(k\), every \(k\)-admissible integer \(n\) satisfies
+\[
+        n\ge c_1\frac{k^2}{\log k}.
+\]
+\end{lemma}
+
+\begin{proof}
+We use the prime number theorem with the classical de la Vall\'ee Poussin error
+term; see, for example, \cite[Chapter 15]{Davenport}. In particular, uniformly for \(k\le u<v\le 2k\),
+\[
+        \pi(v)-\pi(u)
+        =
+        \int_u^v \frac{\dd t}{\log t}
+        +
+        O\!\left(k\exp(-c\sqrt{\log k})\right)
+\]
+for some absolute constant \(c>0\). Hence every interval
+\(I\subset(k,2k)\) of length \(|I|\ge k/(\log k)^2\) contains a prime, once
+\(k\) is sufficiently large.
+
+Let \(n\) be \(k\)-admissible and put
+\[
+        T=\frac nk .
+\]
+We first prove that, for every fixed \(C>0\), no \(k\)-admissible \(n\) can
+satisfy
+\[
+        T\le C\log k
+\]
+for all sufficiently large \(k\).
+
+We need a simple geometric observation. For every real \(T>2\), there is an
+integer \(a\ge1\) such that
+\[
+        \left(\frac{T-1}{a},\frac{T}{a}\right)\cap(1,2)
+\]
+has length at least \(1/(4T)\). Indeed, write
+\[
+        T=m+\alpha,
+        \qquad
+        m\ge2,
+        \quad
+        0\le\alpha<1 .
+\]
+If \(\alpha\ge1/2\), take \(a=m\). Then
+\[
+        \left(\frac{T-1}{m},\frac{T}{m}\right)\cap(1,2)
+        =
+        \left(1,1+\frac{\alpha}{m}\right),
+\]
+whose length is at least \(1/(4T)\). If \(\alpha<1/2\) and \(m=2\), take
+\(a=1\); the intersection is \((1+\alpha,2)\), whose length is larger than
+\(1/2\). Finally, if \(\alpha<1/2\) and \(m\ge3\), take \(a=m-1\). Then
+\[
+        \left(\frac{T-1}{m-1},\frac{T}{m-1}\right)
+        =
+        \left(
+        1+\frac{\alpha}{m-1},
+        1+\frac{1+\alpha}{m-1}
+        \right)
+        \subset (1,2),
+\]
+and its length is \(1/(m-1)\ge1/(4T)\).
+
+Now suppose \(T\le C\log k\). Choose \(a\) as above. Multiplying by \(k\), the
+interval
+\[
+        \left(\frac{n-k}{a},\frac{n}{a}\right)\cap(k,2k)
+\]
+has length at least
+\[
+        \frac{k}{4T}
+        \ge
+        \frac{k}{4C\log k}.
+\]
+For sufficiently large \(k\), this length is larger than \(k/(\log k)^2\), so
+the interval contains a prime \(p\in(k,2k)\). Thus
+\[
+        \frac{n-k}{a}<p<\frac{n}{a},
+\]
+and therefore
+\[
+        n-k<ap<n .
+\]
+Let
+\[
+        i=n-ap .
+\]
+Then \(i\) is an integer satisfying \(0<i<k\), so \(1\le i\le k-1\), and
+\[
+        p\mid n-i .
+\]
+This contradicts \(k\)-admissibility. Therefore, for every fixed \(C>0\),
+every \(k\)-admissible \(n\) satisfies
+\[
+        T>C\log k
+\]
+for all sufficiently large \(k\).
+
+We now strengthen this to \(T\gg k/\log k\). Put
+\[
+        L_0=(\log k)^2,
+        \qquad
+        H_0=\left\lfloor\frac{k}{L_0}\right\rfloor,
+\]
+and let
+\[
+        \mathcal P=
+        \{p\text{ prime}: k<p\le k+H_0\}.
+\]
+By the prime number theorem,
+\[
+        |\mathcal P|\ge c_0\frac{k}{L_0\log k}
+\]
+for some absolute constant \(c_0>0\) and all sufficiently large \(k\). Since
+\(H_0<k\), we have
+\[
+        \mathcal P\subset(k,2k).
+\]
+
+Let \(p\in\mathcal P\). Since \(n\) is \(k\)-admissible, the least
+nonnegative residue \(r_p\) of \(n\) modulo \(p\) satisfies either \(r_p=0\), or
+\(k+1\le r_p\le p-1\). Hence there is an integer \(j_p\) such that
+\[
+        0\le j_p\le p-k-1\le H_0-1
+\]
+and
+\[
+        p\mid n+j_p .
+\]
+Define
+\[
+        a_p=\frac{n+j_p}{p} .
+\]
+Then
+\[
+        n\le a_pp<n+H_0 .
+\]
+
+Let
+\[
+        \mathcal A=
+        \left\{
+        a\in\ZZ:
+        \frac{n}{k+H_0}\le a<\frac{n+H_0}{k}
+        \right\} .
+\]
+Every \(a_p\) lies in \(\mathcal A\). Writing \(h=H_0/k\), we have
+\(h\le1/L_0\), and the length of the interval defining \(\mathcal A\) is
+\[
+        \frac{n+H_0}{k}-\frac{n}{k+H_0}
+        =
+        T+h-\frac{T}{1+h}
+        =
+        \frac{Th}{1+h}+h
+        \le
+        \frac{T+1}{L_0}.
+\]
+Thus
+\[
+        |\mathcal A|\le \frac{T}{L_0}+2 .
+\]
+
+For a fixed \(a\in\mathcal A\), the primes \(p\in\mathcal P\) with \(a_p=a\)
+satisfy
+\[
+        n\le ap<n+H_0 .
+\]
+Hence they lie in an interval of length \(H_0/a\). Since
+\[
+        a\ge \frac{n}{k+H_0}
+        =
+        \frac{T}{1+H_0/k}
+        \ge
+        \frac{T}{2}
+\]
+for large \(k\), the number of such primes is at most
+\[
+        1+\frac{H_0}{a}
+        \le
+        1+\frac{2H_0}{T}.
+\]
+Therefore
+\[
+        |\mathcal P|
+        \le
+        \left(\frac{T}{L_0}+2\right)
+        \left(1+\frac{2H_0}{T}\right).
+\]
+Using \(H_0\le k/L_0\), this gives
+\[
+        |\mathcal P|
+        \le
+        \frac{T}{L_0}+2+\frac{2k}{L_0^2}+\frac{4k}{L_0T}.
+\]
+Combining this with the lower bound for \(|\mathcal P|\), and multiplying by
+\(L_0\), we obtain
+\[
+        c_0\frac{k}{\log k}
+        \le
+        T+2L_0+\frac{2k}{L_0}+\frac{4k}{T}.
+\]
+
+Now take \(C=16/c_0\) in the first part of the proof. For all sufficiently
+large \(k\),
+\[
+        T>C\log k .
+\]
+Thus
+\[
+        \frac{4k}{T}
+        \le
+        \frac{c_0}{4}\frac{k}{\log k}.
+\]
+Also,
+\[
+        2L_0+\frac{2k}{L_0}
+        =
+        o\!\left(\frac{k}{\log k}\right).
+\]
+Hence, for sufficiently large \(k\),
+\[
+        2L_0+\frac{2k}{L_0}
+        \le
+        \frac{c_0}{4}\frac{k}{\log k}.
+\]
+It follows that
+\[
+        c_0\frac{k}{\log k}
+        \le
+        T+\frac{c_0}{2}\frac{k}{\log k},
+\]
+and so
+\[
+        T\ge \frac{c_0}{2}\frac{k}{\log k}.
+\]
+Since \(n=Tk\), the lemma follows with \(c_1=c_0/2\).
+\end{proof}
+
+We shall also use primes in short intervals.
+
+\begin{lemma}[Baker--Harman]
+\label{lem:short-primes}
+There is an absolute constant \(\alpha>0\) such that the following holds. If
+\(0<\beta<\alpha\), then, for all sufficiently large \(x\),
+\[
+        \#\{p\text{ prime}:x<p\le x+x^{1-\beta}\}
+        \gg_\beta
+        \frac{x^{1-\beta}}{\log x}.
+\]
+One may take any fixed \(\beta<0.465\).
+\end{lemma}
+
+\begin{proof}
+We use the Baker--Harman theorem \cite{BakerHarman} in the following standard
+form: there is an admissible constant \(\alpha>0\), with \(\alpha=0.465\)
+admissible, such that uniformly for sufficiently large \(x\) and
+\[
+        x^{1-\alpha}\le y\le x,
+\]
+one has
+\[
+        \pi(x+y)-\pi(x)\gg \frac{y}{\log x}.
+\]
+Taking \(y=x^{1-\beta}\), with any fixed \(0<\beta<\alpha\), gives the stated
+estimate.
+\end{proof}
+
+The main analytic input is Konyagin's integer-point theorem. We state precisely
+the form needed below.
+
+\begin{lemma}[Konyagin's integer-point theorem]
+\label{lem:konyagin-original}
+Let \(r>1\) be an integer, \(N>0\), \(W>1\), and let
+\(f\in C^{r+1}[0,N]\). Let \(D_r>0\), \(D_{r+1}>0\), \(\delta>0\), and
+\(\lambda\ge1\). Suppose that, for all \(u\in[0,N]\),
+\[
+        \frac{D_r}{2}\le f^{(r)}(u)\le D_r,
+        \qquad
+        |f^{(r+1)}(u)|\le D_{r+1} .
+\]
+Let \(S\subset[0,N]\cap\ZZ\), and suppose that for every \(u\in S\) there
+exist \(v\in\ZZ\) and \(w\in\NN\), with \(w\le W\), such that
+\[
+        \left|f(u)-\frac vw\right|<\delta .
+\]
+Then
+\[
+\begin{aligned}
+        |S|
+        \le C N\bigg[&
+        (D_r\lambda^rW^2)^{1/(2r-1)}
+        +
+        \left(\frac{\delta W^2}{D_r\lambda^r}\right)^{1/(r-1)}
+        +
+        \left(\frac{D_{r+1}\lambda W^2}{D_r}\right)^{1/(2r)}
+        \bigg]
+        +2r\lambda,
+\end{aligned}
+\]
+where \(C>0\) is an absolute constant.
+\end{lemma}
+
+\begin{proof}
+This is Theorem~2, formula~(4), of Konyagin~\cite{Konyagin}. Konyagin states
+throughout that all constants denoted by \(c_i\) are absolute; in particular
+the constant in this estimate is independent of
+\(r,N,W,D_r,D_{r+1},\delta\), and \(\lambda\).
+\end{proof}
+
+We shall use only the following specialization to the curve \(A/u\).
+
+\begin{lemma}[Konyagin's estimate for \(A/u\)]
+\label{lem:konyagin-special}
+Let \(M,L\) be positive integers with \(M\ge2\) and \(1\le L\le M\).
+Let \(A>M\), let \(0<\Delta<1/2\), and let \(r\ge2\) be an integer satisfying
+\[
+        \frac{(r+1)L}{M}\le \log 2 .
+\]
+Put
+\[
+        D=\frac{A r!}{M^{r+1}} .
+\]
+For
+\[
+        \mathcal R(A;M,L,\Delta)
+        :=
+        \left\{
+        u\in(M,M+L]\cap\ZZ:
+        \left\|\frac Au\right\|<\Delta
+        \right\},
+\]
+one has, for every \(\lambda\ge1\),
+\[
+\begin{aligned}
+        |\mathcal R(A;M,L,\Delta)|
+        \le C L\bigg[&
+        (D\lambda^r)^{1/(2r-1)}
+        +
+        \left(\frac{\Delta}{D\lambda^r}\right)^{1/(r-1)}
+        +
+        \left(\frac{(r+1)\lambda}{M}\right)^{1/(2r)}
+        \bigg]
+        +2r\lambda,
+\end{aligned}
+\]
+where \(C>0\) is an absolute constant.
+\end{lemma}
+
+\begin{proof}
+Apply Lemma \ref{lem:konyagin-original} on the interval \([0,L]\) to
+\[
+        f(t)=(-1)^r\frac{A}{M+t} .
+\]
+Then
+\[
+        f^{(r)}(t)=\frac{A r!}{(M+t)^{r+1}}>0 .
+\]
+Since \((r+1)L/M\le\log2\), we have, for \(0\le t\le L\),
+\[
+        \frac{D}{2}
+        \le
+        \frac{A r!}{(M+t)^{r+1}}
+        \le
+        D .
+\]
+Moreover,
+\[
+        |f^{(r+1)}(t)|
+        =
+        \frac{A(r+1)!}{(M+t)^{r+2}}
+        \le
+        \frac{A(r+1)!}{M^{r+2}}
+        =
+        \frac{(r+1)D}{M} .
+\]
+Now let
+\[
+        S=
+        \{t\in[0,L]\cap\ZZ: M+t\in\mathcal R(A;M,L,\Delta)\}.
+\]
+Since \(M\) is an integer, the map \(t\mapsto M+t\) is a bijection from \(S\)
+onto \(\mathcal R(A;M,L,\Delta)\). Hence
+\[
+        |S|=|\mathcal R(A;M,L,\Delta)|.
+\]
+For every \(t\in S\), there exists an integer \(m\in\ZZ\) such that
+\[
+    \left|\frac{A}{M+t}-m\right|<\Delta.
+\]
+Hence
+\[
+    |f(t)-(-1)^r m|<\Delta.
+\]
+Thus the rational-approximation hypothesis of
+Lemma~\ref{lem:konyagin-original} is satisfied with
+\[
+    v=(-1)^r m,\qquad w=1.
+\]
+Since Lemma~\ref{lem:konyagin-original} is stated for \(W>1\), we may simply
+take \(W=2\); the resulting powers of \(W\) are absolute constants and will be
+absorbed into the final constant \(C\).
+
+Applying Lemma~\ref{lem:konyagin-original} with
+\[
+    N=L,\qquad
+    D_r=D,\qquad
+    D_{r+1}=\frac{(r+1)D}{M},\qquad
+    \delta=\Delta,\qquad
+    W=2,
+\]
+and absorbing the harmless powers of \(W=2\) into the absolute constant gives
+the stated estimate.
+\end{proof}
+
+\section{Proof of the main theorem}
+
+\begin{proof}[Proof of Theorem \ref{thm:main}]
+Fix
+\[
+        \beta=\frac1{10}.
+\]
+This choice is smaller than \(0.465\), so Lemma \ref{lem:short-primes} applies.
+Put
+\[
+        X=\log k,
+        \qquad
+        Y=\log X .
+\]
+Choose a positive constant \(c\) sufficiently small so that
+\[
+        \frac{\beta}{15c}>20,
+        \qquad
+        \frac{1}{20c}>20 .
+        \tag{C}
+\]
+We shall prove that, for all sufficiently large \(k\), no \(k\)-admissible
+integer \(n\) can satisfy
+\[
+        2k<n\le
+        \exp\!\left(c\frac{X^2}{Y}\right).
+        \tag{2.1}
+\]
+
+Assume, for contradiction, that such a \(k\)-admissible \(n\) exists for
+arbitrarily large \(k\). By Lemma \ref{lem:prelim},
+\[
+        n\ge c_1\frac{k^2}{X}.
+        \tag{2.2}
+\]
+Let
+\[
+        H=\lfloor k^{1-\beta}\rfloor,
+        \qquad
+        \Delta=2k^{-\beta} .
+\]
+For sufficiently large \(k\), we have \(H<k\), and hence
+\[
+        (k,k+H]\subset(k,2k).
+\]
+
+Let \(p\in(k,k+H]\) be prime, and let \(r_p\) be the least nonnegative residue
+of \(n\) modulo \(p\). Since \(n\) is \(k\)-admissible,
+\[
+        r_p\notin\{1,2,\ldots,k\}.
+\]
+Thus either \(r_p=0\), or \(k+1\le r_p\le p-1\). If \(r_p=0\), then
+\[
+        \left\|\frac np\right\|=0 .
+\]
+If \(r_p>k\), then
+\[
+        \left\|\frac np\right\|
+        \le
+        1-\frac{r_p}{p}
+        \le
+        1-\frac{k+1}{p}
+        <
+        \frac{p-k}{p}
+        \le
+        \frac{H}{k} .
+\]
+Therefore, for every prime \(p\in(k,k+H]\),
+\[
+        \left\|\frac np\right\|\le \frac{H}{k}<\Delta .
+\]
+Since \(H=\lfloor k^{1-\beta}\rfloor\), Lemma \ref{lem:short-primes}, applied
+with \(x=k\), gives
+\[
+        \#\{p\text{ prime}:k<p\le k+H\}
+        \gg
+        \frac{H}{X}.
+\]
+Hence
+\[
+        \mathcal N
+        :=
+        \left|
+        \left\{
+        u\in(k,k+H]\cap\ZZ:
+        \left\|\frac nu\right\|<\Delta
+        \right\}
+        \right|
+        \gg
+        \frac{H}{X}.
+        \tag{2.3}
+\]
+
+We shall now contradict this lower bound by applying Lemma
+\ref{lem:konyagin-special}.
+
+For \(j\ge2\), define
+\[
+        Q_j=\frac{n j!}{k^{j+1}} .
+\]
+Let \(r\) be the least integer \(j\ge2\) for which
+\[
+        Q_j\le k^{-\beta}.
+        \tag{2.4}
+\]
+Such an \(r\) exists for all sufficiently large \(k\). Indeed, if
+\[
+        R=\left\lceil \frac{4cX}{Y}\right\rceil+10,
+\]
+then, using \((2.1)\) and \(\log(R!)\le R\log R\), we get
+\[
+        \log Q_R
+        \le
+        c\frac{X^2}{Y}+R\log R-(R+1)X
+        \le
+        -2c\frac{X^2}{Y}
+\]
+for sufficiently large \(k\). In particular \(Q_R\le k^{-\beta}\), once
+\(k\) is large. Thus
+\[
+        2\le r\le R\le 5c\frac{X}{Y}
+        \tag{2.5}
+\]
+for sufficiently large \(k\).
+
+Since \(H/k\le k^{-\beta}\), it follows from \((2.5)\) that
+\[
+        \frac{(r+1)H}{k}=o(1).
+\]
+In particular,
+\[
+        \frac{(r+1)H}{k}\le\log2
+\]
+for all sufficiently large \(k\). Hence Lemma \ref{lem:konyagin-special} may be
+applied with
+\[
+        M=k,
+        \qquad
+        L=H,
+        \qquad
+        A=n,
+        \qquad
+        D=Q_r,
+        \qquad
+        \Delta=2k^{-\beta}.
+\]
+
+Set
+\[
+        a_r=\frac{2r-1}{3r-2}
+\]
+and choose
+\[
+        \lambda=
+        \left(\frac{\Delta^{a_r}}{Q_r}\right)^{1/r} .
+        \tag{2.6}
+\]
+Since \(a_r<1\), \(\Delta=2k^{-\beta}\), and \(Q_r\le k^{-\beta}\), we have
+\(\lambda\ge1\) for all sufficiently large \(k\). Lemma
+\ref{lem:konyagin-special} gives
+\begin{equation}
+\begin{aligned}
+        \mathcal N
+        \le C H\bigg[&
+        (Q_r\lambda^r)^{1/(2r-1)}
+        +
+        \left(\frac{\Delta}{Q_r\lambda^r}\right)^{1/(r-1)}
+        +
+        \left(\frac{(r+1)\lambda}{k}\right)^{1/(2r)}
+        \bigg]
+        +2r\lambda .
+\end{aligned}
+\tag{2.7}
+\end{equation}
+By the definition of \(\lambda\), the first two terms in the square brackets are
+both equal to
+\[
+        \Delta^{1/(3r-2)} .
+\]
+Using \((2.5)\) and \((C)\), we get
+\[
+        \Delta^{1/(3r-2)}
+        \ll
+        \exp\!\left(-\frac{\beta X}{3r}\right)
+        \le
+        \exp\!\left(-\frac{\beta Y}{15c}\right)
+        =
+        X^{-\beta/(15c)}
+        \ll
+        X^{-20}.
+        \tag{2.8}
+\]
+
+It remains to estimate the third term in \((2.7)\) and the final term
+\(2r\lambda\).
+
+First suppose \(r=2\). Then \(Q_2=2n/k^3\), and \((2.2)\) gives
+\[
+        Q_2\gg \frac{1}{kX}.
+\]
+Since \(a_2=3/4\), it follows from \((2.6)\) that
+\[
+        \lambda
+        \ll
+        \left(k^{-3\beta/4}\cdot kX\right)^{1/2}
+        =
+        X^{1/2}k^{1/2-3\beta/8} .
+        \tag{2.9}
+\]
+Therefore
+\[
+        \left(\frac{3\lambda}{k}\right)^{1/4}
+        \ll
+        \left(X^{1/2}k^{-1/2-3\beta/8}\right)^{1/4}
+        \ll
+        k^{-1/10}
+        \ll
+        X^{-20},
+        \tag{2.10}
+\]
+and also
+\[
+        r\lambda
+        \ll
+        X^{1/2}k^{1/2-3\beta/8}
+        =
+        o\!\left(\frac{H}{X^2}\right),
+        \tag{2.11}
+\]
+because \(H\asymp k^{1-\beta}\) and
+\[
+        1-\beta-
+        \left(\frac12-\frac{3\beta}{8}\right)
+        =
+        \frac12-\frac{5\beta}{8}
+        >0 .
+\]
+
+Now suppose \(r\ge3\). By the minimality of \(r\),
+\[
+        Q_{r-1}=\frac{n(r-1)!}{k^r}>k^{-\beta}.
+\]
+Since \(Q_r=(r/k)Q_{r-1}\), we have
+\[
+        Q_r>r k^{-\beta-1}.
+\]
+Also
+\[
+        1-a_r=\frac{r-1}{3r-2}<\frac13 .
+\]
+Hence \((2.6)\) gives
+\[
+        \lambda^r
+        =
+        \frac{\Delta^{a_r}}{Q_r}
+        \ll
+        \frac{k^{-\beta a_r}}{r k^{-\beta-1}}
+        \le
+        k^{1+\beta/3},
+\]
+and therefore
+\[
+        \lambda\ll k^{(1+\beta/3)/r} .
+        \tag{2.12}
+\]
+For \(r\ge3\) and \(\beta=1/10\), the exponent \((1+\beta/3)/r\) is at most
+\(31/90\). Since \(r\le5cX/Y\), we have \(r+1\le k^{1/20}\) for sufficiently
+large \(k\). Thus, by \((2.12)\),
+\[
+        \frac{(r+1)\lambda}{k}
+        \ll
+        k^{-1+1/20+31/90}
+        \le
+        k^{-1/2}
+\]
+for all sufficiently large \(k\). Consequently,
+\[
+        \left(\frac{(r+1)\lambda}{k}\right)^{1/(2r)}
+        \ll
+        k^{-1/(4r)}
+        \le
+        \exp\!\left(-\frac{Y}{20c}\right)
+        =
+        X^{-1/(20c)}
+        \ll
+        X^{-20},
+        \tag{2.13}
+\]
+where we used \((2.5)\) and \((C)\).
+
+Finally, still assuming \(r\ge3\), \((2.12)\) gives
+\[
+        r\lambda
+        \ll
+        r k^{(1+\beta/3)/r}
+        \le
+        r k^{31/90}.
+\]
+Since \(H\asymp k^{9/10}\) and \(r\ll X/Y\), this implies
+\[
+        r\lambda
+        =
+        o\!\left(\frac{H}{X^2}\right).
+        \tag{2.14}
+\]
+
+Combining \((2.7)\)--\((2.14)\), we obtain
+\[
+        \mathcal N
+        \ll
+        \frac{H}{X^{20}}
+        +
+        o\!\left(\frac{H}{X^2}\right)
+        \ll
+        \frac{H}{X^2}.
+        \tag{2.15}
+\]
+But \((2.3)\) gives
+\[
+    \mathcal N\gg \frac{H}{X}.
+\]
+Equivalently, there exists an absolute constant \(c_*>0\) such that
+\[
+    \mathcal N\ge c_*\frac{H}{X}
+\]
+for all sufficiently large \(k\). On the other hand, \((2.15)\) yields
+\[
+    \mathcal N\le C_*\frac{H}{X^2}
+\]
+for some absolute constant \(C_*>0\). Hence
+\[
+    c_*\le \frac{C_*}{X},
+\]
+which is impossible for sufficiently large \(k\), since \(X=\log k\to\infty\).
+\end{proof}
+
+\begin{remark}
+The proof uses only primes \(p\) in the short interval
+\[
+        (k,k+k^{1-\beta}] .
+\]
+For each such prime, admissibility forces \(n/p\) to be very close to an
+integer. Konyagin's theorem says that this can happen for at most
+\(O(H/(\log k)^2)\) integers \(u\in(k,k+H]\) when
+\[
+        n\le
+        \exp\!\left(c\frac{(\log k)^2}{\log\log k}\right),
+\]
+whereas the Baker--Harman theorem supplies \(\gg H/\log k\) primes in the same
+interval. The remaining logarithmic loss comes from the fact that we only get
+\(H/\log k\) prime-produced points, not \(H\) points.
+\end{remark}
+
+\begin{thebibliography}{9}
+
+\bibitem{BakerHarman}
+R. C. Baker and G. Harman,
+``The difference between consecutive primes,''
+\emph{Proc. London Math. Soc.} (3) \textbf{72} (1996), 261--280.
+
+\bibitem{ErdosProblems451}
+T. F. Bloom,
+Erd\H{o}s Problem \#451,
+\url{https://www.erdosproblems.com/451},
+accessed 26 April 2026.
+
+\bibitem{Davenport}
+H. Davenport,
+\emph{Multiplicative Number Theory},
+3rd ed., Graduate Texts in Mathematics, vol. 74,
+Springer, 2000.
+
+\bibitem{Konyagin}
+S. V. Konyagin,
+``Estimates of the least prime factor of a binomial coefficient,''
+\emph{Mathematika} \textbf{45} (1998), 41--55.
+
+\end{thebibliography}
+
+\end{document}
